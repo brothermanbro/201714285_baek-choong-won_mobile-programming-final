@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:layout_width="300dp"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/npause"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="please input pause time"
+        android:inputType="number" />
+
+
+    <LinearLayout
+        android:id="@+id/linear1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <!--확인 취소 버튼을 위치 시키기 위해서 레이아웃을 생셩하였습니다-->
+        <Button
+            android:id="@+id/ok"
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+          android:background="#0099FF"
+            android:text="OK"
+            android:textSize="20dp"
+            android:textColor="#FFFFFF"
+            android:layout_marginLeft="5dp"
+           ></Button>
+        <!--확인 버튼을 생셩 하였습니다-->
+
+        <Button
+            android:id="@+id/cancel"
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:background="#0099FF"
+            android:text="CANCEL"
+            android:textSize="20dp"
+            android:textColor="#FFFFFF"
+           ></Button>
+        <!--취소 버튼을 생셩 하였습니다-->
+    </LinearLayout>
+</LinearLayout>
