@@ -171,12 +171,14 @@ for(int i=0; i<newList.length; i++) {
     data.add(newList[i]);//String 배열의 값들을 모두 ArrayList에 추가합니다.
 }
                 list.clearChoices();//ListView의 선택지를 초기화 시킵니다.
+                setStringArrayPref(RightActivity.this,LIST1 ,data);//위의 메소드를 사용하여 ArrayList를 내부저장소에 저장합니다.
 day++;//일차의 값의 1을 증가 시킵니다.
                 TextDay.setText(day+"일차");//일차를 업데이크 하여 표시합니다.
 SharedPreferences dayPass = getSharedPreferences(DAYM, 0);//day 값을 내부 저장소에 저장하기 위해서 SharedPreferences 객체를 생성합니다.
 SharedPreferences.Editor editor = dayPass.edit();
 editor.putInt("day", day);//일차를 내부저장소에 저장합니다.
 editor.commit();//변경을 최종 반영합니다.
+
             }
         }
 

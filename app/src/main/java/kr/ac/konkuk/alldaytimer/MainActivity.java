@@ -279,8 +279,8 @@ tm.yield();//원형프로그레스 실행 쓰레드들 종료합니다.
                         onResumea(null);//onResumea() 메소드 호출하여 정지상태에서 다시 시작 합니다.
                         startTime--;//시작횟수를 1감소 시킵니다.
                     }
-                }else {
-                    if(condition==true) {//측정 거리가 1cm보다 클때
+                }else {//측정 거리가 1cm보다 클때
+                    if(condition==true) {
                         onPausea(null);//onPause()메소드를 실행하여 타이머를 정지 시킵니다.
 
                     }

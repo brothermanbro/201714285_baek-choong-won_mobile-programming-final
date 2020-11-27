@@ -21,14 +21,15 @@ import java.util.ArrayList;
 import java.util.Locale;
 
 public class recordActivity extends AppCompatActivity {
+    private static final String DAYP="MYDAYP1";
     ArrayList<String> data;//ArrayList 생성
     private static final String record = "record2";
     ArrayAdapter<String> adapter;//ArrayAdapter 생성
     ListView list;//ListView 생성
     float score;//점수값을 저장할 변수 생성
     long pTime4;//경과 시간값을 저장할 변수 생성
-   int day;//일차 값을 저장할 변수 생성
-
+   int day;//새로 전달 받은 일차 값을 저장할 변수 생성
+int dayp;//휴대폰 내의 저장소에 저장되있던 일차 변수 생성
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,10 +38,13 @@ public class recordActivity extends AppCompatActivity {
         Button ok = (Button) findViewById(R.id.ok);
         data = new ArrayList<String>();//ArrayList를 생성합니다
         data=getStringArrayPref(recordActivity.this,record);//activity가 종료 되고 다시 recordActivity를 실행하여도 ListView를 유지하기 위해서 아래 메소드를 이용하여 내부 저장소에 저장한 ArrayList를 불러와서 data에 저장합니다.
+
+        SharedPreferences dayPass = getSharedPreferences(DAYP, 0);//이전에 휴대폰 내부 저장소에 저장된 day값을 불러오기 위해 SharedPreference객체를 생성하였습니다.
+        dayp= dayPass.getInt("day", 0);//휴대폰내에 저장된 일차 변수를 불러옵니다.
         ok.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                finish();
+                finish();//액티비티를 종료합니다.
             }
         });
         Intent in = getIntent();//RightActivity에서 보낸 intent 정보를 받기 위해 intent를 생성합니다.
@@ -50,7 +54,8 @@ public class recordActivity extends AppCompatActivity {
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, data);//controller 역할을 하는Adapter 객체 생성
         list = (ListView) findViewById(R.id.list);
         list.setAdapter(adapter);//리스트뷰에 adapter를 설정합니다.
-        data.add(day-1+"일차         집중시간:" +String.format(Locale.getDefault(),"%dh %dm %ds", pTime4 / 3600000L, pTime4%3600000L/60000L, pTime4%3600000L%60000L/1000L)  +"          점수:"+score);
+        if(day-1>=0&&(day>dayp)){//새로 전달된 day와 기존에 저장된 dayP를 비교하여 새로 전달된 수가 증가되지 않고 같은 수가 왔다면 항목을 생성하지 않습니다.
+        data.add(day-1+"일차         집중시간:" +String.format(Locale.getDefault(),"%dh %dm %ds", pTime4 / 3600000L, pTime4%3600000L/60000L, pTime4%3600000L%60000L/1000L)  +"          점수:"+score);}
         //RightActivity에서 가져온 일차,집중시간,점수를 ListView에 추가 합니다.
         setStringArrayPref(recordActivity.this,record ,data);//아래 메소드를 사용하여 ArrayList를 내부저장소에 저장합니다.
     }
@@ -86,5 +91,12 @@ public class recordActivity extends AppCompatActivity {
             }
         }
         return urls;//ArrayList를 결과값으로 반환 합니다.
+    }
+    public void onStop(){//activity가 종료되면
+        super.onStop();
+        SharedPreferences dayPass = getSharedPreferences(DAYP, 0);//day 값을 내부 저장소에 저장하기 위해서 SharedPreferences 객체를 생성합니다.
+        SharedPreferences.Editor editor = dayPass.edit();
+        editor.putInt("day", day);//일차를 내부저장소에 저장합니다.
+        editor.commit();
     }
 }
