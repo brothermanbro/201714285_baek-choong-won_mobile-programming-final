@@ -55,15 +55,15 @@ word2=(Button)findViewById(R.id.button6);
 
                 startService(new Intent(this, MusicService.class));//MusicService activity service 실행
                 break;
-            case R.id.button3:
+            case R.id.button3:// 버튼3가 선택 되었다면
 
                 stopService(new Intent(this, MusicService.class));//MusicService activity service 종료
                 break;
-            case R.id.button4:
+            case R.id.button4:// 버튼4가 선택 되었다면
 
                 startService(new Intent(this, MusicService2.class));//MusicService2 activity service 실행
                 break;
-            case R.id.button5:
+            case R.id.button5:// 버튼5가 선택 되었다면
 
                 stopService(new Intent(this, MusicService2.class));//MusicService2 activity service 종료
                 break;
