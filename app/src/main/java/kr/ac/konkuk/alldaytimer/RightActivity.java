@@ -21,7 +21,7 @@ import org.json.JSONException;
 public class RightActivity extends Activity {
     private static final String LIST1 = "LIST1";
     private static final String DAYM="MYDAY2";
-int CODE =1;//EndOfDay로 intent를 보냏때 사용하는 식별 코드입니다.
+int CODE =1;//EndOfDay로 intent를 보낼때 사용하는 식별 코드입니다.
 int day;//일차를 나타내는 변수
 float score;//EndOfDay에서 raingBar로 입력된 점수를 받는 변수
     ArrayList<String> data;//ArrayList 생성
@@ -41,7 +41,7 @@ day= dayPass.getInt("day", 0);//휴대폰내에 저장된 일차 변수를 불�
         Button Eod = (Button)findViewById(R.id.finish);
         Button recordbtn = (Button)findViewById(R.id.record);
         TextDay = (TextView)findViewById(R.id.textDay);
-        TextDay.setText(day+"일차");//겅과된 일차 수를 텍스트에 표시합니다.
+        TextDay.setText(day+"일차");//경과된 일차 수를 텍스트에 표시합니다.
         prev.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

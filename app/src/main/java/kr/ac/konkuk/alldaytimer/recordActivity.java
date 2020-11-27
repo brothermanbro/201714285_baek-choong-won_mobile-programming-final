@@ -27,7 +27,7 @@ public class recordActivity extends AppCompatActivity {
     ListView list;//ListView 생성
     float score;//점수값을 저장할 변수 생성
     long pTime4;//경과 시간값을 저장할 변수 생성
-   int day;//일차 값으 저장할 변수 생성
+   int day;//일차 값을 저장할 변수 생성
 
 
     @Override

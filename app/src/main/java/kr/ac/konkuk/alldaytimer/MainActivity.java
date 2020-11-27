@@ -43,7 +43,7 @@ int pauseStatus = 0;//휴식 횟수를 저장하기 위한 값
     private long mTimeRemaining;//타이머의 남은 시간
  long pTime;//초기화 되었을때 타이머의 경과시간을 표시 합니다.
   Drawable drawable;//원형 프로그레스바의 이미지 리소스 등록을 위해 생성
-Button right;//오른쪽 화면으로 전화하는 버튼
+Button right;//오른쪽 화면으로 전환하는 버튼
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,7 +83,7 @@ right.setOnClickListener(new View.OnClickListener() {
     class timer extends Thread {//원형 프로그레스바를 작동 시키는 thread 생성합니다.
         public void run() {
             // TODO Auto-generated method stub
-            while (pStatus < 100) {// 타이머의 퍼센트 값이 100안되었스면 반복 합니다.
+            while (pStatus < 100) {// 타이머의 퍼센트 값이 100이 안되었으면 반복 합니다.
                 while (condition) {//타이머가 실행 중이라면
                     handler.post(new Runnable() { //핸들러를 통하여 ui를 조작합니다.
 
@@ -119,7 +119,7 @@ right.setOnClickListener(new View.OnClickListener() {
                 mTimeRemaining = millisUntilFinished; //남은 시간을 mTimeRemaining에 저장합니다.
             }
             public void onFinish() {//타이머가 종료될때 실행되는 메소드 입니다.
-                condition =false;//타이머가 종룍되었기 때문에 condition의 값을 false로 변경하고
+                condition =false;//타이머가 종료되었기 때문에 condition의 값을 false로 변경하고
                 reset(null);//reset()을 실행 합니다.
             }
         }.start();//타이머를 실행 합니다.
@@ -145,14 +145,14 @@ right.setOnClickListener(new View.OnClickListener() {
     }
     public void onPausea(View view) {//정지 기능을 하는 method입니다.
         if(condition==true||mTimeRemaining == 0) {//타이머가 실행 중이거나 또는 나머지시간이 없을때 즉 타이머가 실행되기전 초기화 상태일때
-            if (pauseStatus == 0 && mTimeRemaining == 0) {//정지 횟수가 0이고 나머지 시간이 없을때 후식 횟수를 입력받습니다.
+            if (pauseStatus == 0 && mTimeRemaining == 0) {//정지 횟수가 0이고 나머지 시간이 없을때 휴식 횟수를 입력받습니다.
                 final Dialog Pause = new Dialog(this);//커스텀 대화 상자 객체를 생성 합니다.
-                Pause.setContentView(R.layout.pause);//pause.xml을 커슽텀 대화상자 화면으로 설정합니다.
+                Pause.setContentView(R.layout.pause);//pause.xml을 커스텀 대화상자 화면으로 설정합니다.
                 Pause.setTitle("정지 화면");//대화상자의 제목을 설정합니다.
                 Button OK = (Button) Pause.findViewById(R.id.ok);
                 Button CANCEL = (Button) Pause.findViewById(R.id.cancel);
                final EditText number = (EditText) Pause.findViewById(R.id.npause);
-                OK.setOnClickListener(new View.OnClickListener() {//ok버튼이 눌렸을때 실행되는 onClickListener callback 메소드를 무명 클래스로 구현 히였습니다.
+                OK.setOnClickListener(new View.OnClickListener() {//ok버튼이 눌렸을때 실행되는 onClickListener callback 메소드를 익명 클래스로 구현 히였습니다.
                     @Override
                     public void onClick(View view) {
                         if (number.getText().toString().trim().length() > 0) { //editText number에 입력된 숫자가 있디면
@@ -168,7 +168,7 @@ right.setOnClickListener(new View.OnClickListener() {
                     }
                 });
 
-                CANCEL.setOnClickListener(new View.OnClickListener() {//cancel 버튼을 눌렀을때 실행되는 onClickListener callback 메소드를 무명 클래스로 구현 하였습니다.
+                CANCEL.setOnClickListener(new View.OnClickListener() {//cancel 버튼을 눌렀을때 실행되는 onClickListener callback 메소드를 익명 클래스로 구현 하였습니다.
                     @Override
                     public void onClick(View view) {
                         Pause.dismiss(); // canceldl 눌렸을때믄 대화상자가 종료 딥니다.
@@ -236,11 +236,11 @@ tm.yield();//원형프로그레스 실행 쓰레드들 종료합니다.
 
         final EditText hour = (EditText) timeBT.findViewById(R.id.hour);
         final EditText minute = (EditText) timeBT.findViewById(R.id.minute);
-        OK.setOnClickListener(new View.OnClickListener(){//ok버튼이 눌렸을때 실행되는 onClickListener callback 메소드를 무명 클래스로 구현 히였습니다.
+        OK.setOnClickListener(new View.OnClickListener(){//ok버튼이 눌렸을때 실행되는 onClickListener callback 메소드를 익명 클래스로 구현 히였습니다.
             @Override
             public void onClick(View view) {
                 if((Integer.parseInt(hour.getText().toString())<15)&&((Integer.parseInt(minute.getText().toString())< 60))){ //hour editText 숫자가 15이하 minute editText에 숫자가 60이하 일때만 입력에 성공 합니다.
-                    Toast.makeText(getApplicationContext(),"입력 성공",Toast.LENGTH_SHORT).show();//"입력 성공"이라는 토스트바르 띄우고
+                    Toast.makeText(getApplicationContext(),"입력 성공",Toast.LENGTH_SHORT).show();//"입력 성공"이라는 토스트바를 띄우고
                     mHour=Integer.parseInt(hour.getText().toString());//editText에서 입력 받은 숫자를 저장합니다.
                     mMinute=Integer.parseInt(minute.getText().toString());
                     time.setText(mHour+":"+mMinute+":00");//입력 받은 숫자를 버튼 텍스트레 표시해 줍니다
@@ -250,17 +250,17 @@ tm.yield();//원형프로그레스 실행 쓰레드들 종료합니다.
                 }
             }
         });
-        CANCEL.setOnClickListener(new View.OnClickListener() {//cancel 버튼을 눌렀을때 실행되는 onClickListener callback 메소드를 무명 클래스로 구현 하였습니다.
+        CANCEL.setOnClickListener(new View.OnClickListener() {//cancel 버튼을 눌렀을때 실행되는 onClickListener callback 메소드를 익명 클래스로 구현 하였습니다.
             @Override
             public void onClick(View view) {
-                timeBT.dismiss(); // canceldl 눌렸을때믄 대화상자가 종료 딥니다.
+                timeBT.dismiss();
             }
         });
         timeBT.show();//대화상자를 화면에 생성합니다.
     }
     protected void onResume() {//activity가 onResume 상태가 되면
         super.onResume();
-        manager.registerListener(listener, proximity, SensorManager.SENSOR_DELAY_UI);//생성된 센서미내저에 센서 리스너와 근사값, 센서를 읽어오는 속도를 정의 하여 리스너를 등록합니다.
+        manager.registerListener(listener, proximity, SensorManager.SENSOR_DELAY_UI);//생성된 센서매니저에 센서 리스너와 근사값, 센서를 읽어오는 속도를 정의 하여 리스너를 등록합니다.
     }
     @Override
     protected void onPause() {//activity가 onPause 상태가 되면

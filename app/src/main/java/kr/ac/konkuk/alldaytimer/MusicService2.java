@@ -15,7 +15,7 @@ public class MusicService2 extends Service {
     }//service와 activity를 연결하는 역할로 실행됩니다.
     public void onCreate(){
         player = MediaPlayer.create(this, R.raw.classicb);// MediaPlayer객체에 raw파일의 음악파일을 연결합니다.
-        player.setLooping(true);//음악이 반복하도록 설정합니다.
+        player.setLooping(true);//음악이 반복 하도록 설정합니다.
     }
     public void onDestroy(){//service가 종료 되면
         Toast.makeText(this, "Music Service가 중지 되었습니다.", Toast.LENGTH_SHORT).show();

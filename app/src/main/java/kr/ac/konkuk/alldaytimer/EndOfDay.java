@@ -54,7 +54,7 @@ ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener()
         ok.setOnClickListener(new View.OnClickListener() {//ok버튼을 누르면 실행 됩니다.
             @Override
             public void onClick(View view) {
-               selectedItems = new ArrayList<>();//선텍되 리스트들을 저장할 ArrayList를 생성합니다.
+               selectedItems = new ArrayList<>();//선텍된 리스트들을 저장할 ArrayList를 생성합니다.
                 SparseBooleanArray checkedItemPositions = list.getCheckedItemPositions();//ListView의 항목이 체크 되었는지 확인하고 체크된 리스트의 위치를 배열로 저장합니다.
                 for( int i=0; i<checkedItemPositions.size(); i++){//체크된 리스트의 수만큼 반복합니다.
                     int pos = checkedItemPositions.keyAt(i);//체크된 리스트의 위치를 pos에 저장합니다.

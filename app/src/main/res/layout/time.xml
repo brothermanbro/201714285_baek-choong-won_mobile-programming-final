@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="#fff"
     android:orientation="vertical">
-    <!--인원 입력 대화 상자의 레이아웃과 버튼을 생성 하였습니다-->
+
     <EditText
         android:id="@+id/hour"
         android:layout_width="match_parent"
@@ -18,12 +18,12 @@
         android:layout_height="wrap_content"
         android:hint="please input minute"
         android:inputType="number" />
-    <!--인원 수를 입력 받을 텍스트를 생셩 하였습니다-->
+
     <LinearLayout
         android:id="@+id/linear1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <!--확인 취소 버튼을 위치 시키기 위해서 레이아웃을 생셩하였습니다-->
+
         <Button
             android:id="@+id/ok"
             android:layout_width="140dp"
@@ -33,7 +33,7 @@
             android:textSize="20dp"
             android:layout_marginLeft="5dp"
             android:textColor="#FFFFFF"></Button>
-        <!--확인 버튼을 생셩 하였습니다-->
+
 
         <Button
             android:id="@+id/cancel"
@@ -44,7 +44,7 @@
             android:text="CANCEL"
             android:textSize="20dp"
             android:textColor="#FFFFFF"></Button>
-        <!--취소 버튼을 생셩 하였습니다-->
+
     </LinearLayout>
 
 
